@@ -18,7 +18,7 @@ LABEL author="Tom Saleeba"
 
 WORKDIR /usr/local/tomcat/webapps
 COPY --from=builder /war/ ./ROOT/
-RUN \
+RUN apk update && apk upgrade && \
   wget -O ../lib/woodstox-core-5.0.3.jar 'https://search.maven.org/remotecontent?filepath=com/fasterxml/woodstox/woodstox-core/5.0.3/woodstox-core-5.0.3.jar' && \
   wget -O ../lib/stax2-api-4.0.0.jar 'https://search.maven.org/remotecontent?filepath=org/codehaus/woodstox/stax2-api/4.0.0/stax2-api-4.0.0.jar' && \
   rm -r docs/ examples/ host-manager/ manager/ && \
